@@ -24,16 +24,16 @@ export default function Header() {
     <div>
     <ul className="flex space-x-6">
         <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-            pathMatchRoute("/") && "text-black border-b-red-400"}`}
+            pathMatchRoute("/") && "text-neutral-950 border-b-red-500"}`}
         onClick={() => navigate("/")}
         >Accueil</li>
         {/* [3px] = custom tailwind size */}
         <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-            pathMatchRoute("/annonces") && "text-black border-b-red-400"}`}
+            pathMatchRoute("/annonces") && "text-neutral-950 border-b-red-500"}`}
         onClick={() => navigate("/annonces")}
         >Annonces</li>
         <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-            pathMatchRoute("/se-connecter") && "text-black border-b-red-400"}`}
+            pathMatchRoute("/se-connecter") && "text-neutral-950 border-b-red-500"}`}
         onClick={() => navigate("/se-connecter")}
         >Se connecter</li>
     </ul>

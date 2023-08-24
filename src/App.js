@@ -12,31 +12,31 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <>
-    <Router>
-      <Header/>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/profil" element={<Profile/>} />
-        <Route path="/se-connecter" element={<SignIn/>} />
-        <Route path="/creer-compte" element={<SignUp/>} />
-        <Route path="/oubli-mdp" element={<ForgotPassword/>} />
-        <Route path="/annonces" element={<Offers/>} />
-      </Routes>
-    </Router>
-    <ToastContainer
-position="top-right"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="light"
-/>
-{/* Same as */}
-<ToastContainer />
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profil" element={<Profile />} />
+          <Route path="/se-connecter" element={<SignIn />} />
+          <Route path="/creer-compte" element={<SignUp />} />
+          <Route path="/oubli-mdp" element={<ForgotPassword />} />
+          <Route path="/annonces" element={<Offers />} />
+        </Routes>
+      </Router>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
     </>
   );
 }

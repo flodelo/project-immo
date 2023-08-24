@@ -1,5 +1,6 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -7,6 +8,20 @@ export default function Header() {
   const location = useLocation();
 
   console.log(location.pathname);
+
+  const [pageState, setPageState] = useState("Connecté");
+
+  const auth = getAuth();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setPageState("Profil");
+      } else {
+        setPageState("Se connecter");
+      }
+    });
+  }, [auth]);
 
   function pathMatchRoute(route) {
     if (route === location.pathname) {
@@ -47,12 +62,12 @@ export default function Header() {
             </li>
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/se-connecter") &&
+                (pathMatchRoute("/se-connecter") || pathMatchRoute("/profil")) &&
                 "text-neutral-950 border-b-red-400"
               }`}
-              onClick={() => navigate("/se-connecter")}
+              onClick={() => navigate("/profil")}
             >
-              Se connecter
+              {pageState}
             </li>
           </ul>
         </div>

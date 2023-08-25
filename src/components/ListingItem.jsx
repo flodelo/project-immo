@@ -1,5 +1,6 @@
 import React from "react";
 import Moment from "react-moment";
+import 'moment/locale/fr';
 import { Link } from "react-router-dom";
 import { MdLocationOn } from "react-icons/md";
 import { FaTrash } from "react-icons/fa";

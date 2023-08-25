@@ -36,15 +36,15 @@ export default function Header() {
           <img
             src="/logo.png"
             alt="logo"
-            className="h-6 cursor-pointer"
+            className="h-7 cursor-pointer"
             onClick={() => navigate("/")}
           />
         </div>
         <div>
-          <ul className="flex space-x-6">
+          <ul className="flex space-x-8">
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/") && "text-neutral-950 border-b-red-500"
+              className={`cursor-pointer py-3 text-md font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+                pathMatchRoute("/") && "text-neutral-950 border-b-red-400"
               }`}
               onClick={() => navigate("/")}
             >
@@ -52,18 +52,18 @@ export default function Header() {
             </li>
             {/* [3px] = custom tailwind size */}
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-md font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 pathMatchRoute("/annonces") &&
-                "text-neutral-950 border-b-red-500"
+                "text-neutral-950 border-b-red-400"
               }`}
               onClick={() => navigate("/annonces")}
             >
               Annonces
             </li>
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-md font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 (pathMatchRoute("/se-connecter") || pathMatchRoute("/profil")) &&
-                "text-neutral-950 border-b-red-500"
+                "text-neutral-950 border-b-red-400"
               }`}
               onClick={() => navigate("/profil")}
             >

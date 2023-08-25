@@ -12,6 +12,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EditListing from "./pages/EditListing";
 import Listing from "./pages/Listing";
+import Category from "./pages/Category";
 
 function App() {
   return (
@@ -31,10 +32,11 @@ function App() {
             element={<Listing />}
           />
           <Route path="/annonces" element={<Offers />} />
+          <Route path="/categorie/:categoryName" element={<Category />} />
           <Route path="/publier-annonce" element={<PrivateRoute />}>
             <Route path="/publier-annonce" element={<CreateListing />} />
           </Route>
-          <Route path="modifier-annonce" element={<PrivateRoute />}>
+          <Route path="/modifier-annonce" element={<PrivateRoute />}>
             <Route
               path="/modifier-annonce/:listingId"
               element={<EditListing />}

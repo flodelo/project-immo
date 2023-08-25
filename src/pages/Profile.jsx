@@ -1,10 +1,19 @@
 import { getAuth, updateProfile } from "firebase/auth";
-import { doc, updateDoc } from "firebase/firestore";
-import { useState } from "react";
+import {
+  collection,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "../firebase.config";
 import { FcHome } from "react-icons/fc";
+import ListingItem from "../components/ListingItem";
 
 export default function Profile() {
   const auth = getAuth();
@@ -12,6 +21,10 @@ export default function Profile() {
   const navigate = useNavigate();
 
   const [changeDetail, setChangeDetail] = useState(false);
+
+  const [listings, setListings] = useState(null);
+
+  const [loading, setLoading] = useState(true);
 
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
@@ -49,6 +62,28 @@ export default function Profile() {
       toast.error("Oups. Un Problème est survenu. Réessayez");
     }
   }
+
+  useEffect(() => {
+    async function fetchUserListings() {
+      const listingRef = collection(db, "listings");
+      const q = query(
+        listingRef,
+        where("userRef", "==", auth.currentUser.uid),
+        orderBy("timestamp", "desc")
+      );
+      const querySnap = await getDocs(q);
+      let listings = [];
+      querySnap.forEach((doc) => {
+        return listings.push({
+          id: doc.id,
+          data: doc.data(),
+        });
+      });
+      setListings(listings);
+      setLoading(false);
+    }
+    fetchUserListings();
+  }, [auth.currentUser.uid]);
 
   return (
     <>
@@ -109,12 +144,28 @@ export default function Profile() {
               to="/publier-annonce"
               className="flex justify-center items-center"
             >
-              <FcHome className="mr-2 text-3xl bg-white rounded-full p-1 border-2" />
+              <FcHome className="mr-2 text-3xl bg-red-200 rounded-full p-1 border-2" />
               Poster une annonce
             </Link>
           </button>
         </div>
       </section>
+      <div className="max-w-6xl px-3 mt-6 mx-auto">
+        {!loading && listings.length > 0 && (
+          <>
+            <h2 className="text-2xl text-center font-semibold">Mes annonces</h2>
+            <ul>
+              {listings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  id={listing.id}
+                  listing={listing.data}
+                />
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
     </>
   );
 }

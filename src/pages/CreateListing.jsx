@@ -38,6 +38,7 @@ export default function CreateListing() {
     latitude: 0,
     longitude: 0,
   });
+
   const {
     type,
     title,
@@ -96,7 +97,7 @@ export default function CreateListing() {
       toast.error("Vous pouvez soumettre 6 images max");
       return;
     }
-    
+
     let geolocation = {};
     let location;
     if (geolocationEnabled) {
@@ -171,7 +172,9 @@ export default function CreateListing() {
       imgUrls,
       geolocation,
       timestamp: serverTimestamp(),
+      userRef: auth.currentUser.uid,
     };
+
     delete formDataCopy.images;
     !formDataCopy.offer && delete formDataCopy.discountedPrice;
     delete formDataCopy.latitude;

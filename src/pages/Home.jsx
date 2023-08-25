@@ -25,7 +25,6 @@ export default function Home() {
         // create the query
         const q = query(
           listingsRef,
-          where("offer", "==", true),
           orderBy("timestamp", "desc"),
           limit(4)
         );
@@ -112,7 +111,7 @@ export default function Home() {
       <div className="max-w-6xl mx-auto pt-4 space-y-6">
         {offerListings && offerListings.length > 0 && (
           <div className="m-2 mb-6">
-            <h2 className="px-3 text-2xl mt-6 font-semibold">Annonces récentes</h2>
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Dernières annonces</h2>
             <Link to="/annonces">
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
                 Voir plus

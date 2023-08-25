@@ -7,8 +7,6 @@ export default function Header() {
 
   const location = useLocation();
 
-  console.log(location.pathname);
-
   const [pageState, setPageState] = useState("Connecté");
 
   const auth = getAuth();

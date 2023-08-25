@@ -7,7 +7,7 @@ export default function Header() {
 
   const location = useLocation();
 
-  const [pageState, setPageState] = useState("Connecté");
+  const [pageState, setPageState] = useState("Se connecter");
 
   const auth = getAuth();
 
@@ -42,7 +42,7 @@ export default function Header() {
           <ul className="flex space-x-8">
             <li
               className={`cursor-pointer py-3 text-md font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/") && "text-neutral-950 border-b-rose-600"
+                pathMatchRoute("/") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/")}
             >
@@ -52,7 +52,7 @@ export default function Header() {
             <li
               className={`cursor-pointer py-3 text-md font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 pathMatchRoute("/annonces") &&
-                "text-neutral-950 border-b-rose-600"
+                "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/annonces")}
             >
@@ -61,7 +61,7 @@ export default function Header() {
             <li
               className={`cursor-pointer py-3 text-md font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 (pathMatchRoute("/se-connecter") || pathMatchRoute("/profil")) &&
-                "text-neutral-950 border-b-rose-600"
+                "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/profil")}
             >

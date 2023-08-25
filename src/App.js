@@ -25,7 +25,9 @@ function App() {
           <Route path="/creer-compte" element={<SignUp />} />
           <Route path="/oubli-mdp" element={<ForgotPassword />} />
           <Route path="/annonces" element={<Offers />} />
-          <Route path="/creer-annonce" element={<CreateListing />} />
+          <Route path="/publier-annonce" element={<PrivateRoute />}>
+            <Route path="/publier-annonce" element={<CreateListing />} />
+          </Route>
         </Routes>
       </Router>
       <ToastContainer

@@ -15,6 +15,7 @@ export default function ListingItem({ listing, id, onEdit, onDelete }) {
           src={listing.imgUrls[0]}
         />
         <Moment
+          locale="fr"
           className="absolute top-2 left-2 bg-[#3377cc] text-white uppercase text-xs font-semibold rounded-md px-2 py-1 shadow-lg"
           fromNow
         >
@@ -29,22 +30,21 @@ export default function ListingItem({ listing, id, onEdit, onDelete }) {
           </div>
           <p className="font-semibold m-0 text-xl truncate">{listing.title}</p>
           <p className="text-[#457b9d] mt-2 font-semibold">
-          
             {listing.offer
               ? listing.discountedPrice
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, " ")
               : listing.regularPrice
                   .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
-
-            €      
-            {listing.type === "rent" && " / mois"}
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
+            €{listing.type === "rent" && " / mois"}
           </p>
           <div className="flex items-center mt-[10px] space-x-3">
             <div className="flex items-center space-x-1">
               <p className="font-bold text-xs">
-                {listing.bedrooms > 1 ? `${listing.bedrooms} Chambres` : "1 Chambre"}
+                {listing.bedrooms > 1
+                  ? `${listing.bedrooms} Chambres`
+                  : "1 Chambre"}
               </p>
             </div>
             <div className="flex items-center space-x-1">

@@ -159,7 +159,7 @@ export default function Profile() {
               to="/publier-annonce"
               className="flex justify-center items-center"
             >
-              <FcHome className="mr-2 text-3xl bg-red-200 rounded-full p-1 border-2" />
+              <FcHome className="mr-2 text-3xl bg-white rounded-full p-1 border-2" />
               Poster une annonce
             </Link>
           </button>

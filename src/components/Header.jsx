@@ -41,8 +41,8 @@ export default function Header() {
         <div>
           <ul className="flex space-x-8">
             <li
-              className={`cursor-pointer py-3 text-md font-semibold text-gray-400 ${
-                pathMatchRoute("/") && "text-black border-b-red-500 border-b-[3px]"
+              className={`cursor-pointer py-3 text-md font-semibold ${
+                pathMatchRoute("/") && "text-red-600 border-b-red-500 border-b-[3px]"
               }`}
               onClick={() => navigate("/")}
             >
@@ -50,18 +50,18 @@ export default function Header() {
             </li>
             {/* [3px] = custom tailwind size */}
             <li
-              className={`cursor-pointer py-3 text-md font-semibold text-gray-400 ${
+              className={`cursor-pointer py-3 text-md font-semibold ${
                 pathMatchRoute("/annonces") &&
-                "text-black border-b-red-500 border-b-[3px]"
+                "text-red-600 border-b-red-500 border-b-[3px]"
               }`}
               onClick={() => navigate("/annonces")}
             >
               Annonces
             </li>
             <li
-              className={`cursor-pointer py-3 text-md font-semibold text-gray-400 ${
+              className={`cursor-pointer py-3 text-md font-semibold ${
                 (pathMatchRoute("/se-connecter") || pathMatchRoute("/profil")) &&
-                "text-black border-b-red-500 border-b-[3px]"
+                "text-red-600 border-b-red-500 border-b-[3px]"
               }`}
               onClick={() => navigate("/profil")}
             >

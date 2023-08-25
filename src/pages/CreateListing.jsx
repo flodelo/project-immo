@@ -96,6 +96,7 @@ export default function CreateListing() {
       toast.error("Vous pouvez soumettre 6 images max");
       return;
     }
+    
     let geolocation = {};
     let location;
     if (geolocationEnabled) {

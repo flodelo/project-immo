@@ -44,7 +44,7 @@ export default function Header() {
           <ul className="flex space-x-6">
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/") && "text-neutral-950 border-b-red-400"
+                pathMatchRoute("/") && "text-neutral-950 border-b-red-500"
               }`}
               onClick={() => navigate("/")}
             >
@@ -54,7 +54,7 @@ export default function Header() {
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 pathMatchRoute("/annonces") &&
-                "text-neutral-950 border-b-red-400"
+                "text-neutral-950 border-b-red-500"
               }`}
               onClick={() => navigate("/annonces")}
             >
@@ -63,7 +63,7 @@ export default function Header() {
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 (pathMatchRoute("/se-connecter") || pathMatchRoute("/profil")) &&
-                "text-neutral-950 border-b-red-400"
+                "text-neutral-950 border-b-red-500"
               }`}
               onClick={() => navigate("/profil")}
             >

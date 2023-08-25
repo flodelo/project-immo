@@ -7,6 +7,7 @@ import {
   query,
   updateDoc,
   where,
+  deleteDoc,
 } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -85,6 +86,20 @@ export default function Profile() {
     fetchUserListings();
   }, [auth.currentUser.uid]);
 
+  async function onDelete(listingID) {
+    if (window.confirm("Confirmez-vous la suppression ?")) {
+      await deleteDoc(doc(db, "listings", listingID));
+      const updatedListings = listings.filter(
+        (listing) => listing.id !== listingID
+      );
+      setListings(updatedListings);
+      toast.success("Annonce supprimée");
+    }
+  }
+  function onEdit(listingID) {
+    navigate(`/modifier-annonce/${listingID}`);
+  }
+
   return (
     <>
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
@@ -162,6 +177,8 @@ export default function Profile() {
                   key={listing.id}
                   id={listing.id}
                   listing={listing.data}
+                  onDelete={() => onDelete(listing.id)}
+                  onEdit={() => onEdit(listing.id)}
                 />
               ))}
             </ul>

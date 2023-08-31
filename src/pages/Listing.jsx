@@ -76,7 +76,7 @@ export default function Listing() {
               : listing.regularPrice
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
-            {" "}€{listing.type === "louer" ? " / month" : ""}
+            {" "}€{listing.type === "louer" ? " / mois" : ""}
           </p>
           <p className="flex items-center mt-6 mb-3 font-semibold">
             <FaMapMarkerAlt className="text-green-700 mr-1" />

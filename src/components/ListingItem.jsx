@@ -38,7 +38,7 @@ export default function ListingItem({ listing, id, onEdit, onDelete }) {
               : listing.regularPrice
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
-            €{listing.type === "rent" && " / mois"}
+            €{listing.type === "louer" && " / mois"}
           </p>
           <div className="flex items-center mt-[10px] space-x-3">
             <div className="flex items-center space-x-1">
